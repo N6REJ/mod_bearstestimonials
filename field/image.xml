@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="image_modal" class="image-subform">
+		<field name="img" type="media" default="" label="Image"  description="Browse for image" size="30" />
+		<field name="name" type="text" size="60" default="" label="Name" description="Name" />
+		<field name="title" type="text" default="" label="Main Title" description="Main Title" />
+		<field name="info" type="text" default="" label="Testimonial" description="Testimonial text" published="1"/>
+	</fieldset>
+</form>
