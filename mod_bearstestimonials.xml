@@ -241,11 +241,22 @@
                 <field
                         name = "modulebackgroundSize"
                         type = "text"
-                        class="small-input"
+                        class = "small-input"
                         default = "cover"
                         label = "MOD_BEARSTESTIMONIALS_MODULE_BACKGROUND_SIZE_LABEL"
                         description = "MOD_BEARSTESTIMONIALS_MODULE_BACKGROUND_SIZE_DESC"
                 >
+                </field>
+                <field
+                        name = "jumbotron"
+                        type = "radio"
+                        class = "btn-group btn-group-yesno"
+                        default = "1"
+                        label = "MOD_BEARSTESTIMONIALS_MODULE_JUMBOTRON_LABEL"
+                        description = "MOD_BEARSTESTIMONIALS_MODULE_JUMBOTRON_DESC"
+                >
+                    <option value = "1">JYES</option>
+                    <option value = "0">JNO</option>
                 </field>
             </fieldset>
         </fields>

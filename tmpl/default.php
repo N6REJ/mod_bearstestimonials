@@ -35,6 +35,17 @@ $modulebackgroundImage  = $params->get('modulebackgroundImage', '');
 $modulebackgroundRepeat = $params->get('modulebackgroundRepeat', "no-repeat");
 $modulebackgroundColor  = $params->get('modulebackgroundColor', '');
 $modulebackgroundSize   = $params->get('modulebackgroundSize', 'cover');
+$jumbotron = $params->get('jumbotron', true );
+
+// add class if we need to
+// is parent row?
+// if parent <> row then add class to parent
+// if parent = row then ...
+	// if grandparent = container
+		// add class to greatgrandparent
+		// else add class to grandparent
+
+
 
 if ( $jqueryload ) $document->addScript($modPath . 'assets/js/jquery.min.js');
 if ( $jqueryload ) $document->addScript($modPath . 'assets/js/jquery-noconflict.js');
@@ -85,8 +96,11 @@ $document->addStyleDeclaration($style);
 			<div class = "reviews-block__slide">
 				<div class = "reviews-block__text"><?php echo $item->info; ?></div>
 				<div class = "reviews-block__person">
-					<div class = "reviews-block__person-image"><img src = "<?php echo $item->img; ?>"
-					                                                alt = "<?php echo $item->name; ?>"></div>
+					<?php if($item->img) : ?>
+					<div class = "reviews-block__person-image">
+						<img src = "<?php echo $item->img; ?>" alt = "<?php echo $item->name; ?>">
+					</div>
+					<?php endif; ?>
 					<div class = "reviews-block__person-data">
 						<div class = "reviews-block__person-name"><?php echo $item->name; ?></div>
 						<div class = "reviews-block__person-role"><?php echo $item->title; ?></div>

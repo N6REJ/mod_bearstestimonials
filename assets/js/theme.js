@@ -93,4 +93,21 @@
 		}
 	});
 
-})(jQuery); 
+})(jQuery);
+
+/*
+$jQuery(document).ready(function(){
+
+	// jQuery methods go here...
+	var x = jQuery(".owl-carousel");
+	var parent = x.parent();
+	var grandparent = parent.parent();
+
+
+// prent has row and grandparent has container
+	if (parent.hasClass("row") && grandparent.hasClass("container")) {
+var backgroundok = true;
+	}
+
+});
+*/
