@@ -10,6 +10,10 @@
 -------------------------------------------------------------------------*/
 // no direct access
 defined('_JEXEC') or die;
+
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Factory;
+
 if ( !defined('DS') )
 {
 	define('DS', DIRECTORY_SEPARATOR);
@@ -17,10 +21,9 @@ if ( !defined('DS') )
 $slide              = $params->get('slides');
 $cacheFolder        = JURI::base(true) . '/cache/';
 $modID              = $module->id;
-$modPath            = JURI::base(true) . '/modules/mod_bearstestimonials/';
-$document           = JFactory::getDocument();
+$modPath            = JURI::base(true) . 'modules/mod_bearstestimonials/';
+$document           = Factory::getDocument();
 $moduleclass_sfx    = htmlspecialchars($params->get('moduleclass_sfx'));
-$jqueryload         = $params->get('jqueryload');
 $jpreload           = $params->get('jpreload');
 $showarrows         = $params->get('showarrows');
 $customone          = $params->get('customone');
@@ -35,27 +38,16 @@ $modulebackgroundImage  = $params->get('modulebackgroundImage', '');
 $modulebackgroundRepeat = $params->get('modulebackgroundRepeat', "no-repeat");
 $modulebackgroundColor  = $params->get('modulebackgroundColor', '');
 $modulebackgroundSize   = $params->get('modulebackgroundSize', 'cover');
-$jumbotron = $params->get('jumbotron', true );
+$jumbotron              = $params->get('jumbotron', true);
 
-// add class if we need to
-// is parent row?
-// if parent <> row then add class to parent
-// if parent = row then ...
-	// if grandparent = container
-		// add class to greatgrandparent
-		// else add class to grandparent
+HTMLHelper::_('script', $modPath . 'js/owl.carousel.js', array('relative' => false));
+HTMLHelper::_('script', $modPath . 'js/theme.js', array('relative' => false));
 
+if ( $jpreload ) HTMLHelper::_('stylesheet', $modPath . 'css/jpreload.css', array('relative' => false));
+HTMLHelper::_('stylesheet', $modPath . 'css/style.css', array('relative' => false));
+HTMLHelper::_('stylesheet', $modPath . 'css/bear.carousel.css', array('relative' => false));
 
-
-if ( $jqueryload ) $document->addScript($modPath . 'assets/js/jquery.min.js');
-if ( $jqueryload ) $document->addScript($modPath . 'assets/js/jquery-noconflict.js');
-$document->addScript($modPath . 'assets/js/jquery.owl.carousel.js');
-$document->addScript($modPath . 'assets/js/theme.js');
-if ( $jpreload ) $document->addStyleSheet($modPath . 'assets/css/jpreload.css');
-$document->addStyleSheet($modPath . 'assets/css/style.css');
-$document->addStyleSheet($modPath . 'assets/css/bear.carousel.css');
-$document->addStyleSheet($modPath . 'assets/font-awesome.css');
-$document->addStyleDeclaration('.set_testimon { margin:' . $params->get('container_fix', 6) . 'px; }');
+$document->addStyleDeclaration('.set_testimony { margin:' . $params->get('container_fix', 6) . 'px; }');
 
 // Get background params
 $style = "div#testimonials, div#testimonials-wide{\n";
@@ -92,14 +84,14 @@ $document->addStyleDeclaration($style);
      data-mobile-landscape = "<?php echo $params->get('image_width_mobl') ?>"
      data-mobile-portrait = "<?php echo $params->get('image_width_mobp') ?>">
 	<?php foreach ( $testimonials_items as $item ) : ?>
-		<div class = "set_testimon">
+		<div class = "set_testimony">
 			<div class = "reviews-block__slide">
 				<div class = "reviews-block__text"><?php echo $item->info; ?></div>
 				<div class = "reviews-block__person">
-					<?php if($item->img) : ?>
-					<div class = "reviews-block__person-image">
-						<img src = "<?php echo $item->img; ?>" alt = "<?php echo $item->name; ?>">
-					</div>
+					<?php if ( $item->img ) : ?>
+						<div class = "reviews-block__person-image">
+							<img src = "<?php echo $item->img; ?>" alt = "<?php echo $item->name; ?>">
+						</div>
 					<?php endif; ?>
 					<div class = "reviews-block__person-data">
 						<div class = "reviews-block__person-name"><?php echo $item->name; ?></div>

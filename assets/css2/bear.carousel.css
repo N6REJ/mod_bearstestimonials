@@ -25,7 +25,7 @@
 	position: absolute;
 }
 
-/* Prev/Next buttons 
+/* Prev/Next buttons
 ===================== */
 .owl-nav {
 	margin: 0;
@@ -58,12 +58,12 @@
 	transition: all 0.3s ease-in-out;
 }
 .owl-carousel .owl-nav .owl-prev {
-	background-image: url(../images/arrow-left-light.png);
+	background-image: url(../../images/arrow-left-light.png);
 	background-repeat: no-repeat;
 	background-position: center;
 }
 .owl-carousel .owl-nav .owl-next {
-	background-image: url(../images/arrow-right-light.png);
+	background-image: url(../../images/arrow-right-light.png);
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -101,7 +101,7 @@
 }
 
 
-/* Prev/Next nav buttons styles 
+/* Prev/Next nav buttons styles
 ================================ */
 /* Prev/Next buttons light */
 .nav-light .owl-nav .owl-prev, .nav-light .owl-nav .owl-next,
@@ -109,10 +109,10 @@
 	background-color: #FFF;
 }
 .nav-light .owl-nav .owl-prev {
-	background-image: url(../images/arrow-left-dark.png);
+	background-image: url(../../images/arrow-left-dark.png);
 }
 .nav-light .owl-nav .owl-next {
-	background-image: url(../images/arrow-right-dark.png);
+	background-image: url(../../images/arrow-right-dark.png);
 }
 .nav-light .owl-nav .owl-prev:hover, .nav-light .owl-nav .owl-next:hover,
 .nav-light.nav-bottom-right .owl-nav .owl-prev:hover, .nav-light.nav-bottom-right .owl-nav .owl-next:hover, .nav-light.nav-outside-top .owl-nav .owl-prev:hover, .nav-light.nav-outside-top .owl-nav .owl-next:hover {
@@ -136,7 +136,7 @@
 }
 
 
-/* Prev/Next nav buttons positions 
+/* Prev/Next nav buttons positions
 =================================== */
 /* Prev/Next buttons position outside (left/right) */
 .owl-carousel.nav-outside .owl-nav .owl-prev, .owl-carousel.nav-outside .owl-nav .owl-next {
@@ -161,7 +161,7 @@
 	right: -70px;
 }
 @media (max-width: 1540px) {
-	.owl-carousel.nav-outside .owl-nav .owl-prev, 
+	.owl-carousel.nav-outside .owl-nav .owl-prev,
 	.owl-carousel.nav-outside .owl-nav .owl-next {
 		width: 40px;
 		height: 40px;
@@ -262,7 +262,7 @@
 	right: 0;
 }
 
-/* Dots 
+/* Dots
 ======== */
 .owl-dots, .owl-nav.disabled + .owl-dots {
 	position: absolute;
@@ -371,7 +371,7 @@
 }
 
 
-/* CC item 
+/* CC item
 =========== */
 .owl-carousel .cc-item {
 	position: relative;
@@ -383,7 +383,7 @@
 }
 
 
-/* CC item hover 
+/* CC item hover
 ================= */
 
 /* CC item cover */
@@ -489,7 +489,7 @@
 }
 
 
-/* CC auto width image 
+/* CC auto width image
 ======================= */
 .owl-carousel .cc-auto-width-img {
 	width: auto !important;
@@ -508,7 +508,7 @@
 }
 
 
-/* CC item heights 
+/* CC item heights
 =================== */
 .owl-carousel, .owl-carousel .cc-item { min-height: 50px; } /* CC item minimum height */
 
@@ -551,25 +551,25 @@
 }
 
 
-/* CC item full height offsets (same as header height) 
+/* CC item full height offsets (same as header height)
 ======================================================= */
-.owl-carousel.cc-height-full, 
+.owl-carousel.cc-height-full,
 .owl-carousel.cc-height-full .cc-item {
 	height: calc(100vh - 62px);
 }
 
 /* CC item full height on small screen */
 @media (max-width: 768px) {
-	.owl-carousel.cc-height-full, 
+	.owl-carousel.cc-height-full,
 	.owl-carousel.cc-height-full .cc-item,
-	.owl-carousel.cc-height-m, 
+	.owl-carousel.cc-height-m,
 	.owl-carousel.cc-height-m .cc-item {
 		height: calc(100vh - 62px); /* full height minus mobile header height */
 	}
 }
 
 
-/* CC item inner 
+/* CC item inner
 ================= */
 .owl-carousel .cc-item-inner {
 	position: relative;
@@ -578,7 +578,7 @@
 }
 
 
-/* CC caption 
+/* CC caption
 ============== */
 .owl-carousel .cc-caption {
 	position: absolute;
