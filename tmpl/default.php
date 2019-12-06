@@ -40,12 +40,12 @@ $modulebackgroundColor  = $params->get('modulebackgroundColor', '');
 $modulebackgroundSize   = $params->get('modulebackgroundSize', 'cover');
 $jumbotron              = $params->get('jumbotron', true);
 
-HTMLHelper::_('script', $modPath . 'js/owl.carousel.js', array('relative' => false));
-HTMLHelper::_('script', $modPath . 'js/theme.js', array('relative' => false));
+HTMLHelper::_('script', $modPath . 'js/owl.carousel.js');
+HTMLHelper::_('script', $modPath . 'js/theme.js');
 
-if ( $jpreload ) HTMLHelper::_('stylesheet', $modPath . 'css/jpreload.css', array('relative' => false));
-HTMLHelper::_('stylesheet', $modPath . 'css/style.css', array('relative' => false));
-HTMLHelper::_('stylesheet', $modPath . 'css/bear.carousel.css', array('relative' => false));
+if ( $jpreload ) HTMLHelper::_('stylesheet', $modPath . 'css/jpreload.css');
+HTMLHelper::_('stylesheet', $modPath . 'css/style.css');
+HTMLHelper::_('stylesheet', $modPath . 'css/bear.carousel.css');
 
 $document->addStyleDeclaration('.set_testimony { margin:' . $params->get('container_fix', 6) . 'px; }');
 

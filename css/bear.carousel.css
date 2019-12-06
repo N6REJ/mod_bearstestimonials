@@ -105,8 +105,10 @@
 ================================ */
 /* Prev/Next buttons light */
 .nav-light .owl-nav .owl-prev, .nav-light .owl-nav .owl-next,
-.nav-light.nav-bottom-right .owl-nav .owl-prev, .nav-light.nav-bottom-right .owl-nav .owl-next, .nav-light.nav-outside-top .owl-nav .owl-prev, .nav-light.nav-outside-top .owl-nav .owl-next {
-	background-color: #FFF;
+.nav-light.nav-bottom-right .owl-nav .owl-prev, .nav-light.nav-bottom-right .owl-nav .owl-next,
+.nav-light.nav-outside-top .owl-nav .owl-prev, .nav-light.nav-outside-top .owl-nav .owl-next {
+	background-color: rgba(255,255,255,.3);
+	border: none;
 }
 .nav-light .owl-nav .owl-prev {
 	background-image: url(../images/arrow-left-dark.png);
@@ -115,8 +117,10 @@
 	background-image: url(../images/arrow-right-dark.png);
 }
 .nav-light .owl-nav .owl-prev:hover, .nav-light .owl-nav .owl-next:hover,
-.nav-light.nav-bottom-right .owl-nav .owl-prev:hover, .nav-light.nav-bottom-right .owl-nav .owl-next:hover, .nav-light.nav-outside-top .owl-nav .owl-prev:hover, .nav-light.nav-outside-top .owl-nav .owl-next:hover {
-	background-color: rgba(255, 255, 255, 0.7);
+.nav-light.nav-bottom-right .owl-nav .owl-prev:hover, .nav-light.nav-bottom-right .owl-nav .owl-next:hover,
+.nav-light.nav-outside-top .owl-nav .owl-prev:hover, .nav-light.nav-outside-top .owl-nav .owl-next:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	border: none;
 }
 
 /* Prev/Next buttons rounded */
@@ -143,8 +147,8 @@
 	width: 50px;
 	height: 50px;
 	line-height: 50px;
-	-webkit-background-size: 80%;
-	background-size: 80%;
+	-webkit-background-size: 70%;
+	background-size: 70%;
 	opacity: 1;
 }
 .owl-carousel.nav-outside .owl-nav .owl-prev:hover, .owl-carousel.nav-outside .owl-nav .owl-next:hover {
