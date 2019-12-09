@@ -56,7 +56,7 @@ $style = '.set_testimony { margin:' . $params->get('container_fix', 6) . 'px; }'
 // Get background params
 if (isset($modulebackgroundImage))
 {
-	$style .= ".bear-container{\n";
+	$style .= ".bear-container" . $jumbotron ? $jumbotron : '' . "{\n";
 	$style .= "background-image: url(\"" . Uri::root() . $modulebackgroundImage . "\");\n";
 	$style .= "background-repeat: " . $modulebackgroundRepeat . ";\n";
 	$style .= $modulebackgroundColor ? " background-color: " . $modulebackgroundColor . ";\n" : '';
