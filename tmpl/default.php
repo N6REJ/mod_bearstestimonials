@@ -13,16 +13,16 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Uri\Uri;
 
 if ( !defined('DS') )
 {
 	define('DS', DIRECTORY_SEPARATOR);
 }
+
 $slide              = $params->get('slides');
-$cacheFolder        = JURI::base(true) . '/cache/';
+$cacheFolder        = Uri::base(true) . '/cache/';
 $modID              = $module->id;
-$modPath            = JURI::base(true) . 'modules/mod_bearstestimonials/';
-$document           = Factory::getDocument();
 $moduleclass_sfx    = htmlspecialchars($params->get('moduleclass_sfx'));
 $jpreload           = $params->get('jpreload');
 $showarrows         = $params->get('showarrows');
@@ -35,70 +35,79 @@ $name               = $params->get('name');
 
 // Position background tab
 $modulebackgroundImage  = $params->get('modulebackgroundImage', '');
-$modulebackgroundRepeat = $params->get('modulebackgroundRepeat', "no-repeat");
+$modulebackgroundRepeat = $params->get('modulebackgroundRepeat', 'no-repeat');
 $modulebackgroundColor  = $params->get('modulebackgroundColor', '');
 $modulebackgroundSize   = $params->get('modulebackgroundSize', 'cover');
 $jumbotron              = $params->get('jumbotron', true);
 
-HTMLHelper::_('script', $modPath . 'js/owl.carousel.js');
-HTMLHelper::_('script', $modPath . 'js/theme.js');
+HTMLHelper::_('script', 'mod_bearstestimonials/owl.carousel.js', array('version' => 'auto', 'relative' => true));
+HTMLHelper::_('script', 'mod_bearstestimonials/theme.js', array('version' => 'auto', 'relative' => true));
 
-if ( $jpreload ) HTMLHelper::_('stylesheet', $modPath . 'css/jpreload.css');
-HTMLHelper::_('stylesheet', $modPath . 'css/style.css');
-HTMLHelper::_('stylesheet', $modPath . 'css/bear.carousel.css');
+if ( $jpreload )
+{
+	HTMLHelper::_('stylesheet', 'mod_bearstestimonials/css/jpreload.css', array('version' => 'auto', 'relative' => true));
+}
+HTMLHelper::_('stylesheet', 'mod_bearstestimonials/style.css', array('version' => 'auto', 'relative' => true));
+HTMLHelper::_('stylesheet', 'mod_bearstestimonials/bear.carousel.css', array('version' => 'auto', 'relative' => true));
 
-$document->addStyleDeclaration('.set_testimony { margin:' . $params->get('container_fix', 6) . 'px; }');
+
+$style = '.set_testimony { margin:' . $params->get('container_fix', 6) . 'px; }';
 
 // Get background params
-$style = "div#testimonials, div#testimonials-wide{\n";
-$style .= $modulebackgroundImage ? " background-image: url(\"" . $modulebackgroundImage . "\");\n" : '';
-$style .= " background-repeat: " . $modulebackgroundRepeat . ";\n";
-$style .= $modulebackgroundColor ? " background-color: " . $modulebackgroundColor . ";\n" : '';
-$style .= " background-size: " . $modulebackgroundSize . ";\n";
-$style .= "}\n";
-$document->addStyleDeclaration($style);
+if (isset($modulebackgroundImage))
+{
+	$style .= ".bear-container{\n";
+	$style .= "background-image: url(\"" . Uri::root() . $modulebackgroundImage . "\");\n";
+	$style .= "background-repeat: " . $modulebackgroundRepeat . ";\n";
+	$style .= $modulebackgroundColor ? " background-color: " . $modulebackgroundColor . ";\n" : '';
+	$style .= "background-size: " . $modulebackgroundSize . ";\n";
+	$style .= "}\n";
+}
 
+Factory::getDocument()->addStyleDeclaration($style);
 ?>
 
-<?php if ( $params->get('jpreload') == '1' ) : ?>
-	<script type = "text/javascript">
-        function preload() {
-            document.getElementById("loaded").style.display = "none";
-            document.getElementById("bears-testimonial").style.display = "block";
-        }//preloader
-        window.onload = preload;
-	</script>
-	<div id = "loaded"></div>
-<?php endif; ?>
+<div class="bear-container">
+	<?php if ( $params->get('jpreload') == '1' ) : ?>
+		<script>
+			function preload() {
+				document.getElementById("loaded").style.display = "none";
+				document.getElementById("bears-testimonial").style.display = "block";
+			}//preloader
+			window.onload = preload;
+		</script>
+		<div id = "loaded"></div>
+	<?php endif; ?>
 
-<div class = "owl-carousel <?php echo $params->get('navStyle') ?> <?php echo $params->get('navPosit') ?> <?php echo $params->get('navRounded') ?>"
-     data-dots = "false" data-autoplay = "<?php echo $params->get('autoplay') ?>"
-     data-autoplay-hover-pause = "<?php echo $params->get('autoplay-hover-pause') ?>"
-     data-autoplay-timeout = "<?php echo $params->get('autoplay-timeout') ?>"
-     data-autoplay-speed = "<?php echo $params->get('autoplay-speed') ?>"
-     data-loop = "<?php echo $params->get('dataLoop') ?>" data-nav = "<?php echo $params->get('dataNav') ?>"
-     data-nav-speed = "<?php echo $params->get('autoplay-speed') ?>"
-     data-items = "<?php echo $params->get('image_width') ?>"
-     data-tablet-landscape = "<?php echo $params->get('image_width_tabl') ?>"
-     data-tablet-portrait = "<?php echo $params->get('image_width_tabp') ?>"
-     data-mobile-landscape = "<?php echo $params->get('image_width_mobl') ?>"
-     data-mobile-portrait = "<?php echo $params->get('image_width_mobp') ?>">
-	<?php foreach ( $testimonials_items as $item ) : ?>
-		<div class = "set_testimony">
-			<div class = "reviews-block__slide">
-				<div class = "reviews-block__text"><?php echo $item->info; ?></div>
-				<div class = "reviews-block__person">
-					<?php if ( $item->img ) : ?>
-						<div class = "reviews-block__person-image">
-							<img src = "<?php echo $item->img; ?>" alt = "<?php echo $item->name; ?>">
+	<div class = "owl-carousel <?php echo $params->get('navStyle') ?> <?php echo $params->get('navPosit') ?> <?php echo $params->get('navRounded') ?>"
+		 data-dots = "false" data-autoplay = "<?php echo $params->get('autoplay') ?>"
+		 data-autoplay-hover-pause = "<?php echo $params->get('autoplay-hover-pause') ?>"
+		 data-autoplay-timeout = "<?php echo $params->get('autoplay-timeout') ?>"
+		 data-autoplay-speed = "<?php echo $params->get('autoplay-speed') ?>"
+		 data-loop = "<?php echo $params->get('dataLoop') ?>" data-nav = "<?php echo $params->get('dataNav') ?>"
+		 data-nav-speed = "<?php echo $params->get('autoplay-speed') ?>"
+		 data-items = "<?php echo $params->get('image_width') ?>"
+		 data-tablet-landscape = "<?php echo $params->get('image_width_tabl') ?>"
+		 data-tablet-portrait = "<?php echo $params->get('image_width_tabp') ?>"
+		 data-mobile-landscape = "<?php echo $params->get('image_width_mobl') ?>"
+		 data-mobile-portrait = "<?php echo $params->get('image_width_mobp') ?>">
+		<?php foreach ( $testimonials_items as $item ) : ?>
+			<div class = "set_testimony">
+				<div class = "reviews-block__slide">
+					<div class = "reviews-block__text"><?php echo $item->info; ?></div>
+					<div class = "reviews-block__person">
+						<?php if ( $item->img ) : ?>
+							<div class = "reviews-block__person-image">
+								<img src = "<?php echo Uri::root() . $item->img; ?>" alt = "<?php echo $item->name; ?>">
+							</div>
+						<?php endif; ?>
+						<div class = "reviews-block__person-data">
+							<div class = "reviews-block__person-name"><?php echo $item->name; ?></div>
+							<div class = "reviews-block__person-role"><?php echo $item->title; ?></div>
 						</div>
-					<?php endif; ?>
-					<div class = "reviews-block__person-data">
-						<div class = "reviews-block__person-name"><?php echo $item->name; ?></div>
-						<div class = "reviews-block__person-role"><?php echo $item->title; ?></div>
 					</div>
 				</div>
 			</div>
-		</div>
-	<?php endforeach; ?>
+		<?php endforeach; ?>
+	</div>
 </div>
